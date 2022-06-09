@@ -1,16 +1,24 @@
 <template>
    
  <div class="nav">
-    <router-link to="/money">记账</router-link>
-    <router-link to="/labels">标签</router-link>
-    <router-link to="/statistics">统计</router-link>
+    <router-link to="/money">
+      <icon name="money"/>
+        记账
+    </router-link>
+    <router-link to="/labels">
+        <icon name="tags"/>
+        标签
+        </router-link>
+    <router-link to="/statistics">
+        <icon name="statistics"/>
+        统计
+        </router-link>
   </div>
    
 </template>
 
 <script lang="ts">
-import X from '@/Icons/tags.svg'
-console.log(X)
+
 export default{
     name:'Nav'
 }
