@@ -1,8 +1,7 @@
 <template>
-  <div>
-      我是Statistics
-    <Nav />
-  </div>
+   <Layout>
+            <p>我是Statistics</p>
+    </Layout>     
 </template>
 
 <script lang="ts">
@@ -13,5 +12,3 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-</style>
