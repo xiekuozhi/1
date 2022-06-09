@@ -9,6 +9,8 @@
 </template>
 
 <script lang="ts">
+import X from '@/Icons/tags.svg'
+console.log(X)
 export default{
     name:'Nav'
 }

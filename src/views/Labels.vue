@@ -2,8 +2,6 @@
    <Layout>
             <p>      我是labels</p>
     </Layout>    
-
-
 </template>
 
 <script lang="ts">
