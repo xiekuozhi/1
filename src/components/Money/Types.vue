@@ -13,13 +13,13 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Component } from "vue-property-decorator";
+import { Component} from "vue-property-decorator";
 
 @Component
     export default class Types extends Vue{
       type='-';
-      // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-      selectType(type:string){
+    
+      selectType(type:string):void{
         if(type !=='-' && type !=='+'){
           throw new Error ('type is unknown')
         }
