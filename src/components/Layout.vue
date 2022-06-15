@@ -16,13 +16,14 @@ export default{
 
 <style scoped lang="scss">
 .layout-wrapper{
-    border:1px blue solid;
     display: flex;
     flex-direction: column;
     height:100vh;
+    
 }
 .content{
     overflow: auto  ;
     flex-grow:1;
+    
 }
 </style>
