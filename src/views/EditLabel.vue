@@ -1,7 +1,7 @@
 <template>
   <layout>
     <div class="navBar">
-      <icon class="leftIcon" name="left"  @click="goBack"/>
+      <icon class="leftIcon" name="left" @click="goBack" />
       <span class="title">编辑标签</span>
       <span class="rightIcon"></span>
     </div>
@@ -20,44 +20,40 @@
 </template>
 
 <script lang="ts">
-import { tagListModel } from "@/models/tagListModel";
 import Vue from "vue";
 import Component from "vue-class-component";
 import Notes from "@/components/Money/Notes.vue";
 import Buttoned from "@/components/Button.vue";
+import store from "@/store/index2";
 
 @Component({
   components: { Notes, Buttoned },
 })
 export default class EditLabel extends Vue {
-  tag?: { id: string; name: string } = undefined;
+  tag?:Tag=undefined;
+  
   created() {
-    const id = this.$route.params.id;
-    tagListModel.fetch();
-    const tags = tagListModel.data;
-    const tag = tags.filter((t) => t.id === id)[0];
-    if (tag) {
-      this.tag = tag;
-    } else {
+    this.tag= store.findTag(this.$route.params.id);
+    if (!this.tag) {
       this.$router.replace("/404");
     }
   }
   update(name: string) {
     if (this.tag) {
-      tagListModel.update(this.tag.id, name);
+      store.updateTag(this.tag.id, name);
     }
   }
   remove() {
     if (this.tag) {
-      if(tagListModel.remove(this.tag.id)){
+      if (store.removeTag(this.tag.id)) {
         this.$router.back();
-        }else{
-          window.alert('删除失败')
-        }
+      } else {
+        window.alert("删除失败");
+      }
     }
   }
-  goBack(){
-    this.$router.back()
+  goBack() {
+    this.$router.back();
   }
 }
 </script>

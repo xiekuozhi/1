@@ -19,7 +19,4 @@ type RecordItem = {
     save: () => void;
   }
 
-  interface Window{
-    tagList:Tag[]; 
-    createTag:(name:string)=>void
-  }
+ 
