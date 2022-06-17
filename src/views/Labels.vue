@@ -12,31 +12,24 @@
       /></router-link>
     </div>
     <div class="createTag-wrapper">
-            <Buttoned class="createTag"
-             @click="createTag">新增标签</Buttoned>
+      <Buttoned class="createTag" @click="createTag">新增标签</Buttoned>
     </div>
   </Layout>
 </template>
 
 <script lang="ts">
-import {Component} from "vue-property-decorator";
-import Vue from "vue";
-import Buttoned from '@/components/Button.vue';
-import store from "@/store/index2";
+import { Component } from "vue-property-decorator";
+import Buttoned from "@/components/Button.vue";
+import { mixins } from "vue-class-component";
+import TagHelper from "@/mixins/TagHelper";
 
-
-
-@Component({
-  components:{Buttoned}
-})
-export default class Labels extends Vue {
-  tags = store.tagList;
-
-  createTag() {
-    const name = window.prompt("请输入标签名");
-    if (name) {
-     store.createTag(name)
-    }
+@Component({ components: { Buttoned } })
+export default class Labels extends mixins(TagHelper) {
+  get tags() {
+    return this.$store.state.tagList;
+  }
+  beforecreate() {
+    this.$store.commit("fetchTags");
   }
 }
 </script>
