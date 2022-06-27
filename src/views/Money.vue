@@ -21,7 +21,7 @@ import Component from "vue-class-component";
 @Component({components: { Notes, NumberPad, Types, Tags }})
 export default class Money extends Vue {
   record: RecordItem = { tags: [], notes: "", type: "-", amount: 0 };
-  get  recordList() {
+  get recordList() {
       return this.$store.state.recordList;
     }
   created(){

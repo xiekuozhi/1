@@ -3,11 +3,11 @@
     <div class="tags">
       <router-link
         class="tag"
-        v-for="tag in tags"
-        :key="tag.id"
-        :to="`/labels/edit/${tag.id}`"
+        v-for="Tag in currentTag"
+        :key="Tag.id"
+        :to="`/labels/edit/${Tag.id}`"
       >
-        <span>{{ tag.name }}</span>
+        <span>{{ Tag.name }}</span>
         <icon name="right"
       /></router-link>
     </div>
@@ -25,11 +25,11 @@ import TagHelper from "@/mixins/TagHelper";
 
 @Component({ components: { Buttoned } })
 export default class Labels extends mixins(TagHelper) {
-  get tags() {
-    return this.$store.state.tagList;
-  }
-  beforecreate() {
+  created():void {
     this.$store.commit("fetchTags");
+  }
+  get currentTag(){
+    return this.$store.state.tagList;
   }
 }
 </script>
