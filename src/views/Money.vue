@@ -39,8 +39,8 @@ recordTypeList=recordTypeList
 }
 </script>
 
-<style lang="scss">
-.layout-content {
+<style scoped lang="scss" >
+::v-deep .layout-content {
   display: flex;
   flex-direction: column-reverse;
 }
